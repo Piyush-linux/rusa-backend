@@ -1,0 +1,4 @@
+- [x] UI dashboard
+- [ ] Authentication
+	- login
+	- [ ] AUTH : https://dev.to/rafaelmagalhaes/authentication-in-nuxt-3-375o
