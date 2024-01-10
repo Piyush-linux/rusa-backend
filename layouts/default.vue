@@ -1,16 +1,19 @@
 <script setup>
+    // ------
 import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
-import { useAuthStore } from '~/store/auth'; // import the auth store we just created
+import { useAuthStore } from '@/store/auth'; // import the auth store we just created
 
 const router = useRouter();
+const { logout } = useStrapiAuth()
 
-
-const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth store
+// const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
 
-const logout = () => {
-        logUserOut();
+const LogoutUser = () => {
+        // logUserOut();
+        logout();
         router.push('/login');
+    }
 </script>
 <template>
     <div class="">
@@ -64,11 +67,11 @@ const logout = () => {
                         </a>
                     </div>
                     <div class="bg-white rounded-xl shadow-lg mb-6 px-6 py-4">
-                        <a href="" class="inline-block text-gray-600 hover:text-black my-4 w-full">
+                        <div @click="LogoutUser" class="cursor-pointer inline-block text-gray-600 hover:text-black my-4 w-full">
                             <span class="material-icons-outlined float-left pr-2">power_settings_new</span>
                             Log out
                             <span class="material-icons-outlined float-right">keyboard_arrow_right</span>
-                        </a>
+                        </div>
                     </div>
                 </div>
                 <!-- Content  -->

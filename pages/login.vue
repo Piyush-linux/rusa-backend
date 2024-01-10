@@ -1,7 +1,8 @@
 <script setup>
     definePageMeta({
-  layout: 'join'
-})
+        layout: 'join',
+    })
+
     const { login } = useStrapiAuth()
 	const router = useRouter()
 
@@ -27,7 +28,8 @@ const submit = async () => {
     try {
         let user = await login({ identifier: email.value, password: password.value })
         console.log(user)
-        // navigateTo('/admin/profile')
+        // const token = useCookie('token');
+        navigateTo('/')
     } catch (e) {
         console.log(e)
         alert.value = true ;

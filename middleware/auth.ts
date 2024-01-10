@@ -1,20 +1,29 @@
+import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
+import { useAuthStore } from '~/store/auth'; // import the auth store we just created
 export default defineNuxtRouteMiddleware((to) => {
-  const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
-  const token = useCookie('token'); // get token from cookies
+    // ----
+    const user = useStrapiUser()
+    const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
+    const browser_token = useCookie('strapi_jwt'); // get token from cookies
+    const strapi_token = useStrapiToken()
 
-  if (token.value) {
-    // check if value exists
-    authenticated.value = true; // update the state to authenticated
-  }
+    console.log("Auth---")
+    console.log(strapi_token.value)
+    console.log(user)
+    console.log(browser_token.value)
 
-  // if token exists and url is /login redirect to homepage
-  if (token.value && to?.name === 'login') {
-    return navigateTo('/');
-  }
 
-  // if token doesn't exist redirect to log in
-  if (!token.value && to?.name !== 'login') {
-    abortNavigation();
-    return navigateTo('/login');
-  }
+    if (authenticated.value) {
+    // route : / 
+        // console.log("authenticated")
+        return
+    }else{
+
+        return navigateTo('/login');
+    } 
+
+    // if (strapi_token.value) {
+    //     abortNavigation();
+    // }
+
 });
