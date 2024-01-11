@@ -1,5 +1,5 @@
 <template>
 	<div class="">
-		Error : 404
+		Consultant
 	</div>
 </template>

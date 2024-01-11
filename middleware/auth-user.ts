@@ -3,14 +3,15 @@
   export default defineNuxtRouteMiddleware((to) => {
       // ----
     
-      const strapi_token = useStrapiToken()
+      // const strapi_token = useStrapiToken()
       const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
-      console.log("Auth---")
+      console.log("Auth User---")
 
-      const browser_token = useCookie('strapi_jwt'); // get token from cookies
-      const strapi_token = useStrapiToken()
+      // const browser_token = useCookie('strapi_jwt'); // get token from cookies
+      // const strapi_token = useStrapiToken()
 
       if (!authenticated.value) {
+          abortNavigation();
           return navigateTo('/login');
       }
   });

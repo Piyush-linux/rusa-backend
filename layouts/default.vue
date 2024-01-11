@@ -7,10 +7,11 @@ const router = useRouter();
 const { logout } = useStrapiAuth()
 
 // const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth store
-const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
+const { authenticated } = storeToRefs(useAuthStore());
 
 const LogoutUser = () => {
         // logUserOut();
+        authenticated.value = false ;        
         logout();
         router.push('/login');
     }
@@ -38,16 +39,16 @@ const LogoutUser = () => {
                             Profile
                             <span class="material-icons-outlined float-right">keyboard_arrow_right</span>
                         </NuxtLink>
-                        <a href="" class="inline-block text-gray-600 hover:text-black my-4 w-full">
+                        <NuxtLink to="/" class="inline-block text-gray-600 hover:text-black my-4 w-full">
                             <span class="material-icons-outlined float-left pr-2">dashboard</span>
                             Home
                             <span class="material-icons-outlined float-right">keyboard_arrow_right</span>
-                        </a>
-                        <a href="" class="inline-block text-gray-600 hover:text-black my-4 w-full">
+                        </NuxtLink>
+                        <NuxtLink to="/projects" class="inline-block text-gray-600 hover:text-black my-4 w-full">
                             <span class="material-icons-outlined float-left pr-2">tune</span>
-                            Some menu item
+                            Projects
                             <span class="material-icons-outlined float-right">keyboard_arrow_right</span>
-                        </a>
+                        </NuxtLink>
                         <a href="" class="inline-block text-gray-600 hover:text-black my-4 w-full">
                             <span class="material-icons-outlined float-left pr-2">file_copy</span>
                             Another menu item

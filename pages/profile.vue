@@ -1,4 +1,11 @@
-
+<script setup>
+    definePageMeta({
+        middleware: 'auth-user'
+    })
+    import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
+    import { useAuthStore } from '~/store/auth'; // import the auth store we just created
+    const { user } = storeToRefs(useAuthStore());
+</script>
 <template>
     <div class="h-full">
         <div class="flex items-center justify-center px-5 py-5 h-full">
@@ -10,7 +17,9 @@
                 </div>
                 <div class="w-full mb-10">
                     <div class="h-3 text-3xl leading-tight text-left text-indigo-500">
+                        
                         “
+                        
                     </div>
                     <p class="px-5 text-sm text-center text-gray-600 ">
                         To get social media testimonials like these, keep your customers engaged with your social media accounts by posting regularly yourself
@@ -24,7 +33,7 @@
                         Component One
                     </p>
                     <p class="text-xs text-center text-gray-500 ">
-                        @ Sandhya Ma'am
+                        @ {{ user.username }}
                     </p>
                 </div>
             </div>

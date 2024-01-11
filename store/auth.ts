@@ -12,6 +12,7 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     authenticated: false,
     loading: false,
+    user:{},
   }),
   actions: {
     // async authenticateUser({ username, password }: UserPayloadInterface) {

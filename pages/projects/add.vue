@@ -1,5 +1,5 @@
 <template>
 	<div class="">
-		Error : 404
+		Add Single Project 
 	</div>
 </template>
